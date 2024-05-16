@@ -24,29 +24,7 @@ namespace RandomGenerator
 
             lbNumStudents.Text = listBoxStudents.Items.Count.ToString();
         }
-        private double ConvertToDoubleFromTb(TextBox tb, double defaultValue)
-        {
-            double ret;
-
-            try
-            {
-                ret = Convert.ToDouble(tb.Text);
-            }
-            catch
-            {
-                try
-                {
-                    ret = Convert.ToDouble(tb.Text.Replace('.', ','));
-                }
-                catch
-                {
-                    tb.Text = Convert.ToString(defaultValue);
-                    ret = defaultValue;
-                }
-            }
-
-            return ret;
-        }
+        
 
         private void SetAllNumberOfElements(int num)
         {
@@ -149,9 +127,9 @@ namespace RandomGenerator
 
         private void btnGenerate1_Click(object sender, EventArgs e)
         {
-            int min = (int)ConvertToDoubleFromTb(tbMin1, 0);
-            int max = (int)ConvertToDoubleFromTb(tbMax1, 0);
-            int numberOfElements = (int)ConvertToDoubleFromTb(tbNumberOfElements1, 1);
+            int min = (int)FormHelper.ConvertToDoubleFromControl(tbMin1, 0);
+            int max = (int)FormHelper.ConvertToDoubleFromControl(tbMax1, 0);
+            int numberOfElements = (int)FormHelper.ConvertToDoubleFromControl(tbNumberOfElements1, 1);
             bool ch = chbRepeat1.Checked;
 
             if(listBoxStudents.Items.Count != 0)
@@ -176,9 +154,9 @@ namespace RandomGenerator
 
         private void btnGenerate2_Click(object sender, EventArgs e)
         {
-            int min = (int)ConvertToDoubleFromTb(tbMin2, 0);
-            int max = (int)ConvertToDoubleFromTb(tbMax2, 0);
-            int numberOfElements = (int)ConvertToDoubleFromTb(tbNumberOfElements2, 1);
+            int min = (int)FormHelper.ConvertToDoubleFromControl(tbMin2, 0);
+            int max = (int)FormHelper.ConvertToDoubleFromControl(tbMax2, 0);
+            int numberOfElements = (int)FormHelper.ConvertToDoubleFromControl(tbNumberOfElements2, 1);
             bool ch = chbRepeat2.Checked;
 
             if (listBoxStudents.Items.Count != 0)
@@ -203,9 +181,9 @@ namespace RandomGenerator
 
         private void btnGenerate3_Click(object sender, EventArgs e)
         {
-            int min = (int)ConvertToDoubleFromTb(tbMin3, 0);
-            int max = (int)ConvertToDoubleFromTb(tbMax3, 0);
-            int numberOfElements = (int)ConvertToDoubleFromTb(tbNumberOfElements3, 1);
+            int min = (int)FormHelper.ConvertToDoubleFromControl(tbMin3, 0);
+            int max = (int)FormHelper.ConvertToDoubleFromControl(tbMax3, 0);
+            int numberOfElements = (int)FormHelper.ConvertToDoubleFromControl(tbNumberOfElements3, 1);
             bool ch = chbRepeat3.Checked;
 
             if (listBoxStudents.Items.Count != 0)
