@@ -84,9 +84,14 @@ namespace RandomGenerator
         private void btnOpenFile_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            var f = openFileDialog1.OpenFile();
+            StreamReader sr;
 
-            StreamReader sr = new StreamReader(openFileDialog1.FileName);
+            try
+            {
+                sr = new StreamReader(openFileDialog1.FileName);
+            }
+            catch { return; }
+
             int num = 1;
 
             List<string> students = new List<string>();
@@ -97,12 +102,6 @@ namespace RandomGenerator
                 num++;
             }
 
-            //foreach (var item in students)
-            //{
-            //    listBox1.Items.Add(item);
-            //}
-
-            //SetAllNumberOfElements(students.Count);
             InsertDataInListbox(listBoxStudents, students);
         }
 
@@ -257,7 +256,6 @@ namespace RandomGenerator
 
         private void btnPaste_Click(object sender, EventArgs e)
         {
-            //Если в буфере обмена содержится текст
             if (Clipboard.ContainsText() == true)
             {
                 string someText = Clipboard.GetText();
@@ -271,13 +269,9 @@ namespace RandomGenerator
                 }
 
                 InsertDataInListbox(listBoxStudents, listStudents);
-
-                //Выводим показываем сообщение с текстом, скопированным из буфера обмена
-                //MessageBox.Show(this, someText, "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {
-                //Выводим сообщение о том, что в буфере обмена нет текста
                 MessageBox.Show(this, "В буфере обмена нет текста", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
