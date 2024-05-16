@@ -18,11 +18,14 @@ namespace RandomGenerator
         List<int> generatedValues2 = new List<int>();
         List<int> generatedValues3 = new List<int>();
 
+        int indexEditingListBoxItem = -1;
+        int indexRightClickListBox = -1;
+
         public Form1()
         {
             InitializeComponent();
 
-            lbNumStudents.Text = listBoxStudents.Items.Count.ToString();
+            lbNumStudents.Text = listBoxStudents.Items.Count.ToString();            
         }
         
 
@@ -217,12 +220,44 @@ namespace RandomGenerator
             listBoxStudents.Items.Clear();
             SetAllNumberOfElements(listBoxStudents.Items.Count);
         }
-                
+
+        
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listBoxStudents.SelectedItem == null) return;
-            listBoxStudents.Items.Remove(listBoxStudents.SelectedItem);
-            SetAllNumberOfElements(listBoxStudents.Items.Count);
+            //ListBoxDeleteItem(listBoxStudents);
+
+            if (listBoxStudents.SelectedItem == null)
+            {
+                ShowEditedTextBox(listBoxStudents.Location.X + 10,
+                                  listBoxStudents.Location.Y + listBoxStudents.Items.Count * listBoxStudents.ItemHeight - 10,
+                                  "");
+            }
+            else
+            {
+                indexEditingListBoxItem = e.Y / listBoxStudents.ItemHeight;
+                ShowEditedTextBox(listBoxStudents.Location.X + 10,
+                                  listBoxStudents.Location.Y + (e.Y / listBoxStudents.ItemHeight) * listBoxStudents.ItemHeight - 10,
+                                  listBoxStudents.SelectedItem.ToString());
+            }
+        }
+
+        private void ShowEditedTextBox(int x, int y, string text)
+        {            
+            tbEditLbItem.Location = new Point(x, y);
+            tbEditLbItem.Size = new Size(listBoxStudents.Width, listBoxStudents.ItemHeight);
+            tbEditLbItem.Text = text;
+
+            tbEditLbItem.Visible = true;
+            tbEditLbItem.Focus();
+        }
+
+        private void ListBoxDeleteItem(ListBox lb, int index)
+        {
+            if (index > lb.Items.Count) return;
+
+            lb.Items.RemoveAt(index);
+
+            SetAllNumberOfElements(lb.Items.Count);
         }
 
         private void btnGenerateAll_Click(object sender, EventArgs e)
@@ -292,6 +327,68 @@ namespace RandomGenerator
             {
                 strs[i] = strs[i] + "/" + ints[i].ToString();
             }
+        }
+
+        private void tbEditLbItem_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter) 
+            {
+                ChangeListBoxItem();
+            }
+        }
+
+        private void listBoxStudents_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(tbEditLbItem.Visible) 
+            {
+                ChangeListBoxItem();
+            }
+        }
+
+        private void ChangeListBoxItem()
+        {
+            if (indexEditingListBoxItem == -1)
+            {
+                if (tbEditLbItem.Text != "")
+                {
+                    listBoxStudents.Items.Add(tbEditLbItem.Text);
+                }
+            }
+            else
+            {
+                listBoxStudents.Items.RemoveAt(indexEditingListBoxItem);
+                if (tbEditLbItem.Text != "")
+                {
+                    listBoxStudents.Items.Insert(indexEditingListBoxItem, tbEditLbItem.Text);
+                }
+
+                indexEditingListBoxItem = -1;
+            }
+            tbEditLbItem.Visible = false;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (indexRightClickListBox != -1)
+            {
+                ListBoxDeleteItem(listBoxStudents, indexRightClickListBox);
+                indexRightClickListBox = -1;
+            }
+        }
+
+        private void listBoxStudents_MouseDown(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                indexRightClickListBox = e.Y / listBoxStudents.ItemHeight;
+            }
+        }
+
+        private void ToolStripMenuItemAdd_Click(object sender, EventArgs e)
+        {
+            ShowEditedTextBox(listBoxStudents.Location.X + 10,
+                                  listBoxStudents.Location.Y + listBoxStudents.Items.Count * listBoxStudents.ItemHeight - 10,
+                                  "");
         }
     }
 
