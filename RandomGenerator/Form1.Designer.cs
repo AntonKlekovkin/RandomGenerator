@@ -61,13 +61,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnPaste = new System.Windows.Forms.Button();
             this.lbNumStudents = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxStudents = new System.Windows.Forms.ListBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnGenerateAll = new System.Windows.Forms.Button();
+            this.btnAllCopy = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -390,9 +392,10 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnPaste);
             this.groupBox4.Controls.Add(this.lbNumStudents);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.listBox1);
+            this.groupBox4.Controls.Add(this.listBoxStudents);
             this.groupBox4.Controls.Add(this.btnClear);
             this.groupBox4.Controls.Add(this.btnOpenFile);
             this.groupBox4.Location = new System.Drawing.Point(952, 37);
@@ -401,6 +404,16 @@
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Список";
+            // 
+            // btnPaste
+            // 
+            this.btnPaste.Location = new System.Drawing.Point(117, 48);
+            this.btnPaste.Name = "btnPaste";
+            this.btnPaste.Size = new System.Drawing.Size(75, 23);
+            this.btnPaste.TabIndex = 21;
+            this.btnPaste.Text = "Вставить";
+            this.btnPaste.UseVisualStyleBackColor = true;
+            this.btnPaste.Click += new System.EventHandler(this.btnPaste_Click);
             // 
             // lbNumStudents
             // 
@@ -420,16 +433,16 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Количество человек: ";
             // 
-            // listBox1
+            // listBoxStudents
             // 
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 24;
-            this.listBox1.Location = new System.Drawing.Point(6, 93);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(282, 436);
-            this.listBox1.TabIndex = 18;
-            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
+            this.listBoxStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBoxStudents.FormattingEnabled = true;
+            this.listBoxStudents.ItemHeight = 24;
+            this.listBoxStudents.Location = new System.Drawing.Point(6, 93);
+            this.listBoxStudents.Name = "listBoxStudents";
+            this.listBoxStudents.Size = new System.Drawing.Size(282, 436);
+            this.listBoxStudents.TabIndex = 18;
+            this.listBoxStudents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
             // 
             // btnClear
             // 
@@ -465,11 +478,22 @@
             this.btnGenerateAll.UseVisualStyleBackColor = true;
             this.btnGenerateAll.Click += new System.EventHandler(this.btnGenerateAll_Click);
             // 
+            // btnAllCopy
+            // 
+            this.btnAllCopy.Location = new System.Drawing.Point(13, 609);
+            this.btnAllCopy.Name = "btnAllCopy";
+            this.btnAllCopy.Size = new System.Drawing.Size(1246, 23);
+            this.btnAllCopy.TabIndex = 6;
+            this.btnAllCopy.Text = "Копировать для всех";
+            this.btnAllCopy.UseVisualStyleBackColor = true;
+            this.btnAllCopy.Click += new System.EventHandler(this.btnAllCopy_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 645);
+            this.Controls.Add(this.btnAllCopy);
             this.Controls.Add(this.btnGenerateAll);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -533,10 +557,12 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnOpenFile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxStudents;
         private System.Windows.Forms.Label lbNumStudents;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnGenerateAll;
+        private System.Windows.Forms.Button btnPaste;
+        private System.Windows.Forms.Button btnAllCopy;
     }
 }
 
