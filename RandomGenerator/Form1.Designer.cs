@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chbRepeat1 = new System.Windows.Forms.CheckBox();
             this.tbOutput1 = new System.Windows.Forms.TextBox();
@@ -61,10 +62,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tbEditLbItem = new System.Windows.Forms.TextBox();
             this.btnPaste = new System.Windows.Forms.Button();
             this.lbNumStudents = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.listBoxStudents = new System.Windows.Forms.ListBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnOpenFile = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -75,6 +80,7 @@
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -392,6 +398,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.tbEditLbItem);
             this.groupBox4.Controls.Add(this.btnPaste);
             this.groupBox4.Controls.Add(this.lbNumStudents);
             this.groupBox4.Controls.Add(this.label7);
@@ -404,6 +411,16 @@
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Список";
+            // 
+            // tbEditLbItem
+            // 
+            this.tbEditLbItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.tbEditLbItem.Location = new System.Drawing.Point(13, 175);
+            this.tbEditLbItem.Name = "tbEditLbItem";
+            this.tbEditLbItem.Size = new System.Drawing.Size(288, 29);
+            this.tbEditLbItem.TabIndex = 22;
+            this.tbEditLbItem.Visible = false;
+            this.tbEditLbItem.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbEditLbItem_KeyUp);
             // 
             // btnPaste
             // 
@@ -435,6 +452,7 @@
             // 
             // listBoxStudents
             // 
+            this.listBoxStudents.ContextMenuStrip = this.contextMenuStrip1;
             this.listBoxStudents.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxStudents.FormattingEnabled = true;
             this.listBoxStudents.ItemHeight = 24;
@@ -442,7 +460,31 @@
             this.listBoxStudents.Name = "listBoxStudents";
             this.listBoxStudents.Size = new System.Drawing.Size(282, 436);
             this.listBoxStudents.TabIndex = 18;
+            this.listBoxStudents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxStudents_MouseClick);
             this.listBoxStudents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
+            this.listBoxStudents.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBoxStudents_MouseDown);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemAdd,
+            this.toolStripMenuItem1});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            // 
+            // ToolStripMenuItemAdd
+            // 
+            this.ToolStripMenuItemAdd.Name = "ToolStripMenuItemAdd";
+            this.ToolStripMenuItemAdd.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemAdd.Text = "Добавить";
+            this.ToolStripMenuItemAdd.Click += new System.EventHandler(this.ToolStripMenuItemAdd_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem1.Text = "Удалить";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // btnClear
             // 
@@ -514,6 +556,7 @@
             this.menuStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -563,6 +606,10 @@
         private System.Windows.Forms.Button btnGenerateAll;
         private System.Windows.Forms.Button btnPaste;
         private System.Windows.Forms.Button btnAllCopy;
+        private System.Windows.Forms.TextBox tbEditLbItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemAdd;
     }
 }
 
